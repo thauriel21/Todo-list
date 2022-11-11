@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Todo from './components/Todo';
+
 
 function App() {
+const defaultState =[
+  {label:"comprar mantequilla"},
+  {label:"comprar pan"},
+  {label:"pagar la luz"}
+]
+
+const [items, setItems] = useState(defaultState)
+
+const list = items.map(
+  item => {
+return <Todo>{item.label}</Todo>
+  }
+)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Mi lista de cosas por hacer</h1>
+
+      <input type ="text"/>
+      <button>Agregar</button>
+
+      {list}
     </div>
   );
 }
